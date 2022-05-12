@@ -51,13 +51,14 @@ function removeAllChildNodes(parent) {
     }
 };
 
+
 grid.addEventListener('click', function(){
     let number = prompt("How many squares across would you like the Etch-a-Sketch to be?","");
 
     let gridWidth = parseInt(number);
     let gridSize = Math.pow(gridWidth,2);
 
-    if (typeof(gridWidth) != 'number') {
+    if ( isNaN(gridWidth) || gridWidth == null) {
         return alert('Please enter a number!');
     } else if (gridWidth > 100) {
         return alert('Do you want to crash your computer? Please enter a smaller number :(');
