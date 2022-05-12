@@ -13,18 +13,22 @@ function createGrid(blockSize, gridSize){
 
 createGrid(6.25, 256);
 
-//change color once on hover
-const blocks = document.querySelectorAll('.block');
+//change color on hover
+let blocks = document.querySelectorAll('.block');
 
-function changeColor(block){
+function changeBlockColor(block){
     block.classList.add('blue');
 };
 
-for (let i = 0; i < blocks.length; i++) {
-    blocks[i].addEventListener('mouseenter', function(){
-        changeColor(blocks[i]);
-    });
+function changeAllBlocksColor(listOfBlocks) {
+    for (let i = 0; i < listOfBlocks.length; i++) {
+        listOfBlocks[i].addEventListener('mouseenter', function(){
+            changeBlockColor(listOfBlocks[i]);
+        });
+    }
 };
+
+changeAllBlocksColor(blocks);
 
 //clear grid
 const clear = document.getElementById('clear');
@@ -34,8 +38,8 @@ function removeColor(block) {
 };
 
 function clearGrid(allBlocks){
-    for (let i = 0; i < blocks.length; i++){
-            removeColor(blocks[i]);
+    for (let i = 0; i < allBlocks.length; i++){
+            removeColor(allBlocks[i]);
         };
     };
 
@@ -51,14 +55,13 @@ function removeAllChildNodes(parent) {
     }
 };
 
-
 grid.addEventListener('click', function(){
     let number = prompt("How many squares across would you like the Etch-a-Sketch to be?","");
 
     let gridWidth = parseInt(number);
     let gridSize = Math.pow(gridWidth,2);
 
-    if ( isNaN(gridWidth) || gridWidth == null) {
+    if (isNaN(gridWidth) || gridWidth == null) {
         return alert('Please enter a number!');
     } else if (gridWidth > 100) {
         return alert('Do you want to crash your computer? Please enter a smaller number :(');
@@ -69,6 +72,14 @@ grid.addEventListener('click', function(){
         let blockSize = 1/gridWidth * 100;
         createGrid(blockSize, gridSize);
     }
+
+    let customBlocks = document.querySelectorAll('.block');
+    changeAllBlocksColor(customBlocks);
+
+    clear.addEventListener('click', function(){
+        clearGrid(customBlocks)});
 });
+
+
 
 
