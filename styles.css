@@ -2,10 +2,25 @@ body{
     height:100vh;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     background-color: grey;
+}
+
+button{
+    padding:2vh 4vw;
+    margin: 8vh 2vw;
+    background-color: white;
+    border:none;
+    border-radius: 5px;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: palegoldenrod;
 }
 
 #container{
@@ -15,5 +30,13 @@ body{
     height:500px;
     width:500px;
 
+    background-color: white;
+}
+
+.blue{
+    background-color: cadetblue;
+}
+
+.white{
     background-color: white;
 }
